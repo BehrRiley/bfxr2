@@ -369,6 +369,10 @@ class Tab {
                 //it's a slider
                 var slider = this.sliders[param_name];
                 slider.setValue(value);
+                var num_input = document.getElementById(this.name + "_slider_" + param_name + "_num");
+                if (num_input) {
+                  num_input.value = value.toFixed(2);
+                }
             } else {
                 switch (param.type) {
                     case "BUTTONSELECT":
@@ -539,11 +543,45 @@ class Tab {
 
         slider.on("slideStop", handler_fn);
 
+        slider.on("slide", (val) => {
+          var num_input = document.getElementById(uid + "_num");
+          if (num_input) num_input.value = val.toFixed(2);
+        });
+
+        var number_input = document.createElement("input");
+        number_input.type = "number";
+        number_input.id = uid + "_num";
+        number_input.classList.add("slider-number-input");
+        number_input.step = "0.01";
+        number_input.value = defaultval.toFixed(2);
+        parent_node.appendChild(number_input);
+
+        number_input.addEventListener("input", (e) => {
+          var val;
+          if (e.target.value === "") {
+            val = defaultval;
+          } else if (e.target.value === "-" || e.target.value === "." || e.target.value === "-.") {
+            return;
+          } else {
+            val = parseFloat(e.target.value);
+            if (isNaN(val)) val = defaultval;
+          }
+          val = Math.max(min, Math.min(max, val));
+          slider.setValue(val);
+          handler_fn(val);
+        });
+
+        var bounds_info = document.createElement("span");
+        bounds_info.classList.add("header-label");
+        bounds_info.innerText = "(Min: " + min + " | Max: " + max + " | Def: " + defaultval + ")";
+        parent_node.appendChild(bounds_info);
+
         this.sliders[slider_id] = slider;        
     }
 
     add_button(button_uid, button_text, button_handler, button_tooltip) {
         var button = document.createElement("button");
+        button.classList.add("theme-button");
         button.classList.add("normie_button");
         button.id = button_uid;
         if (button_tooltip != undefined && button_tooltip != "") {
@@ -713,6 +751,7 @@ class Tab {
 
         for (let i = 0; i < button_list.length; i++) {
             var button = document.createElement("button");
+            button.classList.add("theme-button");
             button.classList.add("button_grid_button");
             button.id = uid+"_"+button_list[i][0];
             button.innerText = button_list[i][0];

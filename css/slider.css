@@ -2,25 +2,25 @@
     --sliderheight: 15px;
     --sliderwidth: 150px;
     --sliderwidthnarrow: 106px;
-    --col-white: #ffffff;
-    --col-tanlight: #dbaf85;
-    --col-tan: #c89057;
-    --col-lightbrown: #a96742;
-    --col-mediumbrown: #8f563b;
-    --col-shadowbrown: #824e37;
-    --col-shadowbrowner: #7a4836;
-    --col-darkbrown: #663931;
-    --col-lipflesh: #964e41;
-    --col-black: #201010;
+    --col-white: var(--text-light);
+    --col-tanlight: var(--accent-2);
+    --col-tan: var(--accent);
+    --col-lightbrown: var(--muted);
+    --col-mediumbrown: rgba(255, 255, 255, 0.4);
+    --col-shadowbrown: rgba(0, 0, 0, 0.4);
+    --col-shadowbrowner: rgba(0, 0, 0, 0.6);
+    --col-darkbrown: var(--card);
+    --col-lipflesh: var(--accent);
+    --col-black: var(--text-dark);
     --border-thickness: 1px;
 
-    --slider-border-color: var(--col-darkbrown);
-    --slider-tick-defaultval-color: var(--col-tan);
-    --slider-tick-color: var(--col-lipflesh);
-    --slider-background-color: var(--col-tanlight);
+    --slider-border-color: var(--accent-2);
+    --slider-tick-defaultval-color: var(--accent);
+    --slider-tick-color: var(--muted);
+    --slider-background-color: var(--card-tooltip);
     --col-sliderhandle: var(--col-darkbrown);
 
-    --tooltip-background-color: #fdfdcc;
+    --tooltip-background-color: var(--card-tooltip);
     
 }
 
@@ -158,7 +158,7 @@
 }
 
 .slider.slider-horizontal.singleselect .slider-selection {
-    background: #2b242457;
+    background: var(--card);
     border-radius: 0;
     display: block;
     top: 5px;
@@ -190,24 +190,25 @@
 }
 
 .slider-border {
-    position: relative;
-    float: left;
-    width: calc(var(--sliderwidth) + 9px);
-    height: 100%;
-    background-color: var(--slider-background-color);
-    left: -4.5px;
-    border: var(--border-thickness) solid var(--slider-border-color);
-    box-sizing: border-box;
+  position: relative;
+  float: left;
+  width: calc(var(--sliderwidth) + 9px);
+  height: 100%;
+  background-color: var(--slider-background-color);
+  left: -4.5px;
+  border: var(--border-thickness) solid var(--slider-border-color);
+  box-sizing: border-box;
+  border-radius: 4px;
 }
 
 .slidernarrow>.slider-border {
-    position: relative;
-    float: left;
-    width: calc(var(--sliderwidthnarrow) + 9px);
-    height: 100%;
-    /* background-color: blue; */
-    left: -4.5px;
-    border: var(--border-thickness) solid var(--slider-border-color);
+  position: relative;
+  float: left;
+  width: calc(var(--sliderwidthnarrow) + 9px);
+  height: 100%;
+  left: -4.5px;
+  border: var(--border-thickness) solid var(--slider-border-color);
+  border-radius: 4px;
 }
 
 

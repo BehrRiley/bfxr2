@@ -1,41 +1,40 @@
 /*the structure of the page is HEADER, CONTENT, FOOTER */
 
 :root {
-    --page-background-color: #ccbda1;
-    --panel-background-color: #ccbda1;
-    --panel-border-color: #5c574c;
-    --panel-text-color: #black;
-    --panel-disabled-text-color: #675f51;
-    --tab-background-color-unselected: #887c66;
-    --tab-unselected-border-color: #3c3831;
-    --tab-background-color-selected: var(--panel-background-color);
-    --tab-selected-border-color: var(--panel-border-color);
+    --page-background-color: transparent;
+    --panel-background-color: transparent;
+    --panel-border-color: var(--accent-2);
+    --panel-text-color: var(--text-light);
+    --panel-disabled-text-color: var(--muted);
+    --tab-background-color-unselected: rgba(0, 0, 0, 0.3);
+    --tab-unselected-border-color: transparent;
+    --tab-background-color-selected: var(--card);
+    --tab-selected-border-color: var(--accent);
     --panel-border-thickness: 1px;
     --ui-margin: 5px;
     --font-size: 16px;
     --font-size-small: 12px;
     --font-size-bigger: 24px;
-    --file-item-selected-background-color:#a8c6ee;
+    --file-item-selected-background-color: var(--accent-2);
     --tick-width: 2px;
 
-    
-    --slider-border-color: var(--tab-selected-border-color);
-    --slider-tick-color: #0000002c;
-    --slider-tick-defaultval-color: #5c574c;
+    --slider-border-color: var(--accent-2);
+    --slider-tick-color: rgba(255, 255, 255, 0.2);
+    --slider-tick-defaultval-color: var(--accent);
     --slider-background-color: transparent;
-    --col-sliderhandle: black;
+    --col-sliderhandle: var(--accent);
 
-    --alternating-table-row-color: #e7d1a7;
-    --button-background-color: var(--panel-background-color);
-    --button-pressed-background-color: #e7d1a7;
+    --alternating-table-row-color: rgba(0, 0, 0, 0.15);
+    --button-background-color: var(--card);
+    --button-pressed-background-color: var(--accent-2);
 
     --tween-canvas-width: 75;
     --tween-canvas-height: 32;
 
-    --buttongrid-pressed-background-color: grey;
+    --buttongrid-pressed-background-color: var(--accent-2);
 
     --about-dialog-width: 300px;
-    --about-dialog-backdrop-color: #ccbda188;
+    --about-dialog-backdrop-color: rgba(0, 0, 0, 0.6);
 }
 /* kludge - cf https://stackoverflow.com/questions/7492062/css-overflow-scroll-always-show-vertical-scroll-bar */
 /* ::-webkit-scrollbar {
@@ -57,7 +56,6 @@ body {
     margin:0;
     padding:0;
     background-color: var(--page-background-color);
-    background-image: url("../img/bg.png") ;
     font-size: var(--font-size);
     /* min-height: 1000px; */
     overflow-y:auto;
@@ -68,16 +66,14 @@ body {
 }
 
 #main_container {
-    width:fit-content;
-    background-color: transparent;
-    
-    display: flex;
-    flex-direction: column;
-
-
-    /*horizontally center content*/
-    margin: 0 auto;
-
+  display: flex !important;
+  width: fit-content;
+  background-color: transparent;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow-y: auto;
+  /*horizontally center content*/
+  margin: 0 auto;
 }
 
 #tab_bar {
@@ -143,22 +139,15 @@ body {
 
 
 .tab_page {  
-    height: auto;
-    /* max-height: 1200px; */
-    width: 100%;
-    background-color: var(--panel-background-color);
-    border-style:solid;
-    border-color: var(--panel-border-color);
-    border-width: var(--panel-border-thickness);
-    display: none;
-    flex-direction: row;
-    /*big thick drop-shadow*/
-    filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.5));
-
-    
-    height: 606px;
-    overflow-y: clip;
-    overflow-x: visible;
+  width: 100%;
+  background-color: var(--panel-background-color);
+  border-style: solid;
+  border-color: var(--panel-border-color);
+  border-width: var(--panel-border-thickness);
+  display: none;
+  flex-direction: row;
+  filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.5));
+  height: auto;
 }
 
 .tab_page.active_tab_page {
@@ -182,11 +171,10 @@ body {
 }
 
 .left_panel {
-    /* height: 100%; */
-    width: 150px;
-    display: flex;
-    flex-direction: column;
-    gap: var(--ui-margin);
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-margin);
 }
 
 .template_list {    
@@ -213,20 +201,16 @@ body {
 }
 
 .centre_panel {
-    width: 350px;
-    max-height: 600px;
-
-    margin-top: var(--ui-margin);
-    margin-bottom: 0;
-    margin-left: 0;
-    margin-right: var(--ui-margin);
-
-    background-color: transparent;
-    border: var(--panel-border-thickness) solid var(--panel-border-color);
-    border-bottom:none;
-
-    display: flex;
-    flex-direction: column;
+  width: 350px;
+  margin-top: var(--ui-margin);
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: var(--ui-margin);
+  background-color: transparent;
+  border: var(--panel-border-thickness) solid var(--panel-border-color);
+  border-bottom: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .centre_header {
@@ -237,8 +221,8 @@ body {
 }
 
 .right_panel {
-    width: 120px;
-    background-color: transparent;
+  width: 160px;
+  background-color: transparent;
 }
 
 .scroll_container {
@@ -290,17 +274,25 @@ body {
 
 
 .file_item_name {
-    padding-left: 3px;
-    display:inline-block;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    width: calc(100% - 18px);
-    height:100%;
+  padding-left: 3px;
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: calc(100% - 18px);
+  height: 100%;
+  color: var(--text-light);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+:root.light .file_item_name,
+:root.ecstatic .file_item_name {
+  color: var(--text-dark);
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
 }
 
 .file_item_name.modified_filename {
-    color:rgb(78, 78, 78);
+    color: var(--accent);
     font-style: italic;
 }
 
@@ -379,12 +371,10 @@ table.paramtable {
 }
 
 .button_grid_button.selected {
-    /* background-color: var(--buttongrid-pressed-background-color); */
-    /* set disabled */
-    /* opacity: 1.0;    */
-    /* color: var(--panel-text-color); */
-    /* border-color: transparent; */
-    /* border-radius:2px; */
+  background-color: var(--card) !important;
+  color: var(--accent) !important;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5), 0 0 0 2px var(--accent) !important;
+  transform: scale(0.95);
 }
 .lock_icon.unlocked {
     opacity: 0.4;
@@ -392,17 +382,23 @@ table.paramtable {
 
 
 .slider_container {
-    position: relative;
-    width: var(--sliderwidth);
-    padding-right: var(--ui-margin);
-    padding-left: var(--ui-margin);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  width: auto;
+  padding-right: var(--ui-margin);
+  padding-left: var(--ui-margin);
 }
 
 .transition_container {
-    position: relative;
-    width: var(--sliderwidth);
-    padding-right: var(--ui-margin);
-    padding-left: var(--ui-margin);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  width: auto;
+  padding-right: var(--ui-margin);
+  padding-left: var(--ui-margin);
 }
 
 .parameter_slider {
@@ -451,12 +447,17 @@ td.labelcolumn {
 
 
 .parameter_name {
-    float: right;
-    font-size: var(--font-size-small);
-    width: 100%;
-    text-align: right;
-    cursor: default;
-    user-select: none;
+  float: right;
+  font-size: var(--font-size-small);
+  width: 100%;
+  text-align: right;
+  cursor: default;
+  user-select: none;
+  color: var(--text-light);
+}
+
+:root.light .parameter_name {
+  color: var(--text-dark);
 }
 
 .display_canmvas {
@@ -596,14 +597,14 @@ button:active {
   }
   /* Links inside the dropdown */
   .dropdown-content a {
-    color: black;
+    color: var(--text-light);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
   }
   
   /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #f1f1f1}
+  .dropdown-content a:hover {background-color: var(--accent-2)}
   
   /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
   .dropdown-content.show {
@@ -781,4 +782,49 @@ img {
     font-size: var(--font-size-bigger);
     /*mouse passthrough*/
     pointer-events: none;
+}
+
+/* Input fields and buttons matching theme code blocks */
+input[type="text"],
+input[type="number"],
+select {
+  background-color: var(--card-tooltip);
+  border: 1px solid var(--accent-2);
+  border-radius: 4px;
+  color: var(--accent);
+  padding: 0.25em 0.4em;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  box-shadow: 0 0 8px var(--accent-2);
+}
+
+input[type="checkbox"] {
+  accent-color: var(--accent);
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.normie_button.theme-button,
+.button_grid_button.theme-button,
+.dialog-tab.theme-button,
+#export-download-link.theme-button {
+  min-width: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+  padding: 0.4rem !important;
+  justify-content: center !important;
+}
+
+.left_panel .theme-button,
+.right_panel .theme-button {
+  padding: 0.75rem 0.5rem !important;
+}
+
+.slider-number-input {
+  width: 70px;
+  font-family: Consolas, "Andale Mono", "Lucida Console", "Courier New", monospace;
 }

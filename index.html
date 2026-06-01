@@ -46,23 +46,39 @@
         <link rel="stylesheet" href="css/third_party/bootstrap-slider.css">
         <link rel="stylesheet" href="css/slider.css">
         <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="b-website-references/base-styles.css">
+        <link rel="stylesheet" href="b-website-references/themes.css">
+        <link rel="stylesheet" href="b-website-references/components.css">
         <!--CSS_INCLUDES_END-->
     </head>
     <body>
-        <div id="dropzone" class="dropzone">Drag file to load</div>
-        <div id="main_container">
-            <div id="tab_bar">
+        <div class="wrap">
+            <canvas id="starfield"></canvas>
+            <header class="header">
+                <a href="/" class="brand">
+                    <span class="logo">B</span>
+                    <div>
+                        <div class="brand-title">BEHR.DEV</div>
+                        <div class="brand-subtitle">SOUND FX GENERATOR</div>
+                    </div>
+                </a>
+                <button id="theme-toggle" class="theme-button"><i class="fa-solid fa-moon"></i>Dark</button>
+            </header>
+            <div id="dropzone" class="dropzone">Drag file to load</div>
+            <div id="main_container" class="glass-panel">
+                <div id="tab_bar">
+                </div>
+                <div id="tab_page_manager">
+                </div>
             </div>
-            <div id="tab_page_manager">
-            </div>
-            <div id="footer">
+            <footer>
                 <a href="http://www.increpare.com">increpare</a> · <a href="https://github.com/sponsors/increpare">sponsor</a> · <a href="https://paypal.me/increparegames">paypal</a> · <a href="https://github.com/increpare/bfxr2">source code</a> · <a href="https://www.bfxr.net/v1">old flash version</a>
-            </div>
+            </footer>
         </div>
         <dialog id="about-dialog">
             <div class="dialog-tabs">
-                <button class="dialog-tab active" data-tab="about">About</button>
-                <button class="dialog-tab" data-tab="shortcuts">Shortcuts</button>
+              <button class="theme-button dialog-tab active" data-tab="about">About</button>
+              <button class="theme-button dialog-tab" data-tab="shortcuts">Shortcuts</button>
             </div>
             <div class="dialog-content">
                 <div id="about-tab" class="tab-content active">
@@ -96,7 +112,7 @@
                     </dl>
                 </div>
             </div>
-            <button autofocus onclick="document.getElementById('about-dialog').close()">Close</button>
+          <button class="theme-button" autofocus onclick="document.getElementById('about-dialog').close()">Close</button>
         </dialog>
 
         <dialog id="export-dialog">
@@ -104,8 +120,10 @@
             <label for="export-progress">Progress</label>
             <progress id="export-progress" value="0" max="100">0%</progress>
             <div id="export-progress-text">0/0 files generated</div>
-            <a id="export-download-link" href="#" download="all_sounds.zip">Download</a>
-            <button autofocus onclick="document.getElementById('export-dialog').close()">Close</button>
+          <a class="theme-button" id="export-download-link" href="#" download="all_sounds.zip">Download</a>
+          <button class="theme-button" autofocus onclick="document.getElementById('export-dialog').close()">Close</button>
         </dialog>
+        <script src="b-website-references/global.js"></script>
+        <script src="b-website-references/scrolling-nebula.js"></script>
     </body>
 </html>
